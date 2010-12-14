@@ -17,7 +17,6 @@ from Products.PluggableAuthService.interfaces.plugins import \
     IUserEnumerationPlugin, IUserFactoryPlugin, IValidationPlugin
 
 
-
 # This is probably insane, but it fools five:registerPackage into thinking
 # that this single module is a package.
 __path__ = '.'
@@ -57,7 +56,8 @@ def initialize(context):
         constructors=(pt, create_plugin), visibility=None, icon='loo.png')
 
 
-classImplements(LoginOnlyOncePlugin, IAnonymousUserFactoryPlugin, IAuthenticationPlugin,
+classImplements(LoginOnlyOncePlugin, IAnonymousUserFactoryPlugin,
+    IAuthenticationPlugin,
     IChallengePlugin, IChallengeProtocolChooser, ICredentialsResetPlugin,
     ICredentialsUpdatePlugin, IExtractionPlugin, IGroupEnumerationPlugin,
     IGroupsPlugin, ILoginPasswordExtractionPlugin,
@@ -68,4 +68,3 @@ classImplements(LoginOnlyOncePlugin, IAnonymousUserFactoryPlugin, IAuthenticatio
     IUserEnumerationPlugin, IUserFactoryPlugin, IValidationPlugin)
 
 InitializeClass(LoginOnlyOncePlugin)
-
