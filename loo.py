@@ -43,8 +43,7 @@ class LoginOnlyOncePlugin(BasePlugin):
         """
 
     ## ILoginPasswordExtractionPlugin
-    #""" Common-case derivative.
-    #"""
+    ##Common-case derivative.
     #def extractCredentials(request):
     #    """ request -> { 'login' : login
     #                   , 'password' : password
@@ -59,8 +58,7 @@ class LoginOnlyOncePlugin(BasePlugin):
     #    """
 
     ## ILoginPasswordHostExtractionPlugin
-    #""" Common-case derivative.
-    #"""
+    ##Common-case derivative.
     #def extractCredentials(request):
     #    """ request -> { 'login' : login
     #                   , 'password' : password
@@ -78,8 +76,7 @@ class LoginOnlyOncePlugin(BasePlugin):
     #    """
 
     # IAuthenticationPlugin
-    """ Map credentials to a user ID.
-    """
+    #Map credentials to a user ID.
     def authenticateCredentials(credentials):
         """ credentials -> (userid, login)
 
