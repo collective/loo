@@ -406,8 +406,8 @@ def install_plugin(dispatcher, id, title=None, REQUEST=None):
     Boo yah! You need this doc string or Zope 2's publisher will drop this
     method faster than you can say: "This page does not seem to exist..."
     During this time you will also be wondering what is going on, until you
-    finally get around to deleting the ignored exceptions in /Plone/error_log
-    at which point you will realize that you need this doc string.
+    finally get around to deleting the ignored exceptions in /Plone/error_log,
+    at which point you will quickly realize you need this doc string.
     """
     plugin = LoginOnlyOncePlugin(id, title)
     dispatcher._setObject(plugin.getId(), plugin)
