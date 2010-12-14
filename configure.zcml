@@ -1,0 +1,3 @@
+<configure xmlns:five="http://namespaces.zope.org/five">
+    <five:registerPackage package="." initialize=".initialize" />
+</configure>
