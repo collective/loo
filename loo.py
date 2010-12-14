@@ -38,6 +38,6 @@ registerMultiPlugin(LoginOnlyOncePlugin.meta_type)
 
 
 def initialize(context):
-    pt = PageTemplateFile('add_plugin', globals(), __name__='manage_addform')
+    pt = PageTemplateFile('add_plugin', globals(), __name__='manage_addPlugin')
     context.registerClass(LoginOnlyOncePlugin, permission=manage_users,
         constructors=(pt, add_plugin), visibility=None, icon='loo.png')
