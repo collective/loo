@@ -5,7 +5,8 @@ from Products.PluggableAuthService import registerMultiPlugin
 from Products.PluggableAuthService.plugins.BasePlugin import BasePlugin
 
 
-# This is probably insane, but it fools five:registerPackage into thinking that this single module is a package.
+# This is probably insane, but it fools five:registerPackage into thinking
+# that this single module is a package.
 __path__ = '.'
 
 
@@ -18,12 +19,12 @@ class LoginOnlyOncePlugin(BasePlugin):
         self.title = title
 
 
-
 def manage_addpackage(dispatcher, id, title=None, REQUEST=None):
     """
-    Boo yah! You need this doc string or Zope 2's publisher will drop this method 
-    faster than you can say: "Page not found". During this time you will also be wondering what is going on
-    until you finally get around to deleting the ignored exceptions in /Plone/error_log.
+    Boo yah! You need this doc string or Zope 2's publisher will drop this
+    method faster than you can say: "Page not found". During this time you
+    will also be wondering what is going on until you finally get around to
+    deleting the ignored exceptions in /Plone/error_log.
     """
     plugin = LoginOnlyOncePlugin(id, title)
     dispatcher._setObject(plugin.getId(), plugin)
@@ -38,5 +39,7 @@ registerMultiPlugin(LoginOnlyOncePlugin.meta_type)
 
 
 def initialize(context):
-    manage_addform = PageTemplateFile('add_plugin', globals(), __name__='manage_addform')
-    context.registerClass(LoginOnlyOncePlugin, permission=manage_users, constructors=(manage_addform,manage_addpackage), visibility=None)
+    manage_addform = PageTemplateFile('add_plugin', globals(),
+        __name__='manage_addform')
+    context.registerClass(LoginOnlyOncePlugin, permission=manage_users,
+        constructors=(manage_addform, manage_addpackage), visibility=None)
