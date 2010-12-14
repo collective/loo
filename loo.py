@@ -80,7 +80,8 @@ class LoginOnlyOncePlugin(BasePlugin):
 
     # IAuthenticationPlugin
     # Map credentials to a user ID.
-    def authenticateCredentials(credentials):
+    security.declarePrivate('authenticateCredentials')
+    def authenticateCredentials(self, credentials):
         """ credentials -> (userid, login)
 
         o 'credentials' will be a mapping, as returned by IExtractionPlugin.
@@ -90,6 +91,7 @@ class LoginOnlyOncePlugin(BasePlugin):
 
         o If the credentials cannot be authenticated, return None.
         """
+        pass
 
     # IChallengePlugin
     # Initiate a challenge to the user to provide credentials.
