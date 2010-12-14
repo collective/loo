@@ -23,6 +23,10 @@ __path__ = '.'
 
 
 class LoginOnlyOncePlugin(BasePlugin):
+    """
+    Class methods via Products/PluggableAuthService/interfaces/plugins.py
+    """
+
     meta_type = 'Login Only Once Plugin'
     security = ClassSecurityInfo()
 
