@@ -37,7 +37,7 @@ def create_plugin(dispatcher, id, title=None, REQUEST=None):
     method faster than you can say: "This page does not seem to exist..."
     During this time you will also be wondering what is going on, until you
     finally get around to deleting the ignored exceptions in /Plone/error_log
-    and discovering that you need this doc string.
+    at which point you will realize that you need this doc string.
     """
     plugin = LoginOnlyOncePlugin(id, title)
     dispatcher._setObject(plugin.getId(), plugin)
