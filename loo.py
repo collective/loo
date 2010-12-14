@@ -399,7 +399,7 @@ class LoginOnlyOncePlugin(BasePlugin):
         """
 
 
-def create_plugin(dispatcher, id, title=None, REQUEST=None):
+def install_plugin(dispatcher, id, title=None, REQUEST=None):
     """
     Boo yah! You need this doc string or Zope 2's publisher will drop this
     method faster than you can say: "This page does not seem to exist..."
@@ -421,7 +421,7 @@ def initialize(context):
     template = 'manage_addPlugin'
     pt = PageTemplateFile(template, globals(), __name__=template)
     context.registerClass(LoginOnlyOncePlugin, permission=manage_users,
-        constructors=(pt, create_plugin), visibility=None, icon='loo.png')
+        constructors=(pt, install_plugin), visibility=None, icon='loo.png')
 
 
 classImplements(LoginOnlyOncePlugin, IAnonymousUserFactoryPlugin,
