@@ -31,10 +31,9 @@ class LoginOnlyOncePlugin(BasePlugin):
         self.title = title
 
     # IExtractionPlugin
-    """ Extracts login name and credentials from a request.
-    """
+    # Extracts login name and credentials from a request.
+    #
     def extractCredentials(request):
-
         """ request -> {...}
 
         o Return a mapping of any derived credentials.
@@ -43,47 +42,40 @@ class LoginOnlyOncePlugin(BasePlugin):
           appropriate credentials.
         """
 
-#    # ILoginPasswordExtractionPlugin
-#    """ Common-case derivative.
-#    """
-#
-#    def extractCredentials( request ):
-#
-#        """ request -> { 'login' : login
-#                       , 'password' : password
-#                       , k1 : v1
-#                       ,   ...
-#                       , kN : vN
-#                       } | {}
-#
-#        o If credentials are found, the returned mapping will contain at
-#          least 'login' and 'password' keys, with the password in plaintext.
-#
-#        o Return an empty mapping to indicate that the plugin found no
-#          appropriate credentials.
-#        """
+    ## ILoginPasswordExtractionPlugin
+    #""" Common-case derivative.
+    #"""
+    #def extractCredentials(request):
+    #    """ request -> { 'login' : login
+    #                   , 'password' : password
+    #                   , k1 : v1
+    #                   ,   ...
+    #                   , kN : vN
+    #                   } | {}
+    #    o If credentials are found, the returned mapping will contain at
+    #      least 'login' and 'password' keys, with the password in plaintext.
+    #    o Return an empty mapping to indicate that the plugin found no
+    #      appropriate credentials.
+    #    """
 
-#    # ILoginPasswordHostExtractionPlugin
-#    """ Common-case derivative.
-#    """
-#    def extractCredentials( request ):
-#
-#        """ request -> { 'login' : login
-#                       , 'password' : password
-#                       , 'remote_host' : remote_host
-#                       , 'remote_addr' : remote_addr
-#                       , k1 : v1
-#                       ,   ...
-#                       , kN : vN
-#                       } | {}
-#
-#        o If credentials are found, the returned mapping will contain at
-#          least 'login', 'password', 'remote_host' and 'remote_addr' keys,
-#          with the password in plaintext.
-#
-#        o Return an empty mapping to indicate that the plugin found no
-#          appropriate credentials.
-#        """
+    ## ILoginPasswordHostExtractionPlugin
+    #""" Common-case derivative.
+    #"""
+    #def extractCredentials(request):
+    #    """ request -> { 'login' : login
+    #                   , 'password' : password
+    #                   , 'remote_host' : remote_host
+    #                   , 'remote_addr' : remote_addr
+    #                   , k1 : v1
+    #                   ,   ...
+    #                   , kN : vN
+    #                   } | {}
+    #    o If credentials are found, the returned mapping will contain at
+    #      least 'login', 'password', 'remote_host' and 'remote_addr' keys,
+    #      with the password in plaintext.
+    #    o Return an empty mapping to indicate that the plugin found no
+    #      appropriate credentials.
+    #    """
 
     # IAuthenticationPlugin
     """ Map credentials to a user ID.
@@ -100,16 +92,15 @@ class LoginOnlyOncePlugin(BasePlugin):
         """
 
     # IChallengePlugin
-    """ Initiate a challenge to the user to provide credentials.
+    #   Initiate a challenge to the user to provide credentials.
 
-        Challenge plugins have an attribute 'protocol' representing
-        the protocol the plugin operates under, defaulting to None.
+    #   Challenge plugins have an attribute 'protocol' representing
+    #   the protocol the plugin operates under, defaulting to None.
 
-        Plugins operating under the same protocol will all be given an
-        attempt to fire. The first plugin of a protocol group that
-        successfully fires establishes the protocol of the overall
-        challenge.
-    """
+    #   Plugins operating under the same protocol will all be given an
+    #   attempt to fire. The first plugin of a protocol group that
+    #   successfully fires establishes the protocol of the overall
+    #   challenge.
     def challenge(request, response):
         """ Assert via the response that credentials will be gathered.
 
@@ -129,26 +120,23 @@ class LoginOnlyOncePlugin(BasePlugin):
         """
 
     # ICredentialsUpdatePlugin
-    """ Callback:  user has changed her password.
+    #Callback:  user has changed her password.
 
-    This interface is not responsible for the actual password change,
-    it is used after a successful password change event.
-    """
+    #This interface is not responsible for the actual password change,
+    #it is used after a successful password change event.
     def updateCredentials(request, response, login, new_password):
         """ Scribble as appropriate.
         """
 
     # ICredentialsResetPlugin
-    """ Callback:  user has logged out.
-    """
+    # Callback:  user has logged out.
     def resetCredentials(request, response):
-
         """ Scribble as appropriate.
         """
 
     # IUserAdderPlugin
-    """ Create a new user record in a User Manager
-    """
+    #Create a new user record in a User Manager
+    #
     def doAddUser(login, password):
         """ Add a user record to a User Manager, with the given login
             and password
@@ -157,35 +145,29 @@ class LoginOnlyOncePlugin(BasePlugin):
         """
 
     # IRoleAssignerPlugin
-    """ Assign a role to an identified principal
-    """
+    #Assign a role to an identified principal
     def doAssignRoleToPrincipal(principal_id, role):
-
         """ Create a principal/role association in a Role Manager
 
         o Return a Boolean indicating whether the role was assigned or not
         """
 
     def doRemoveRoleFromPrincipal(principal_id, role):
-
         """ Remove a principal/role association from a Role Manager
 
         o Return a Boolean indicating whether the role was removed or not
         """
 
     # IUserFactoryPlugin
-    """ Create a new IPropertiedUser.
-    """
+    #Create a new IPropertiedUser.
     def createUser(user_id, name):
-
         """ Return a user, if possible.
 
         o Return None to allow another plugin, or the default, to fire.
         """
 
     # IAnonymousUserFactoryPlugin
-    """ Create a new anonymous IPropertiedUser.
-    """
+    #Create a new anonymous IPropertiedUser.
     def createAnonymousUser():
 
         """ Return an anonymous user, if possible.
@@ -194,10 +176,8 @@ class LoginOnlyOncePlugin(BasePlugin):
         """
 
     # IPropertiesPlugin
-    """ Return a property set for a user.
-    """
+    #Return a property set for a user.
     def getPropertiesForUser(user, request=None):
-
         """ user -> {}
 
         o User will implement IPropertiedUser.
@@ -213,8 +193,7 @@ class LoginOnlyOncePlugin(BasePlugin):
         """
 
     # IGroupsPlugin
-    """ Determine the groups to which a user belongs.
-    """
+    #Determine the groups to which a user belongs.
     def getGroupsForPrincipal(principal, request=None):
 
         """ principal -> ( group_1, ... group_N )
@@ -226,8 +205,7 @@ class LoginOnlyOncePlugin(BasePlugin):
         """
 
     # IRolesPlugin
-    """ Determine the (global) roles which a user has.
-    """
+    #Determine the (global) roles which a user has.
     def getRolesForPrincipal(principal, request=None):
 
         """ principal -> ( role_1, ... role_N )
@@ -238,23 +216,18 @@ class LoginOnlyOncePlugin(BasePlugin):
         """
 
     # IUpdatePlugin
-
-    """ Allow the user or the application to update the user's properties.
-    """
+    #Allow the user or the application to update the user's properties.
     def updateUserInfo(user, set_id, set_info):
 
         """ Update backing store for 'set_id' using 'set_info'.
         """
 
     # IValidationPlugin
-    """ Specify allowable values for user properties.
-
-    o E.g., constrain minimum password length, allowed characters, etc.
-
-    o Operate on entire property sets, not individual properties.
-    """
+    #Specify allowable values for user properties.
+    # o E.g., constrain minimum password length, allowed characters, etc.
+    #
+    # o Operate on entire property sets, not individual properties.
     def validateUserInfo(user, set_id, set_info):
-
         """ -> ( error_info_1, ... error_info_N )
 
         o Returned values are dictionaries, containing at least keys:
@@ -266,13 +239,11 @@ class LoginOnlyOncePlugin(BasePlugin):
         """
 
     # IUserEnumerationPlugin
-    """ Allow querying users by ID, and searching for users.
-
-    o XXX:  can these be done by a single plugin?
-    """
+    # Allow querying users by ID, and searching for users.
+    #
+    # o XXX:  can these be done by a single plugin?
     def enumerateUsers(id=None, login=None, exact_match=False,
         sort_by=None, max_results=None, **kw):
-
         """ -> ( user_info_1, ... user_info_N )
 
         o Return mappings for users matching the given criteria.
@@ -315,11 +286,9 @@ class LoginOnlyOncePlugin(BasePlugin):
         """
 
     # IGroupEnumerationPlugin
-    """ Allow querying groups by ID, and searching for groups.
-
-    o XXX:  can these be done by a single plugin?
-    """
-
+    #Allow querying groups by ID, and searching for groups.
+    #
+    #o XXX:  can these be done by a single plugin?
     def enumerateGroups(id=None, exact_match=False, sort_by=None,
         max_results=None, **kw):
 
@@ -364,11 +333,9 @@ class LoginOnlyOncePlugin(BasePlugin):
         """
 
     # IRoleEnumerationPlugin
-    """ Allow querying roles by ID, and searching for roles.
-    """
+    #Allow querying roles by ID, and searching for roles.
     def enumerateRoles(id=None, exact_match=False, sort_by=None,
         max_results=None, **kw):
-
         """ -> ( role_info_1, ... role_info_N )
 
         o Return mappings for roles matching the given criteria.
@@ -410,17 +377,15 @@ class LoginOnlyOncePlugin(BasePlugin):
         """
 
     # IRequestTypeSniffer
-    """ Given a request, detects the request type for later use by other
-        plugins.
-    """
+    #Given a request, detects the request type for later use by other
+    #plugins.
     def sniffRequestType(request):
         """ Return a interface identifying what kind the request is.
         """
 
     # IChallengeProtocolChooser
-    """ Choose a proper set of protocols to be used for challenging
-    the client given a request.
-    """
+    #Choose a proper set of protocols to be used for challenging
+    #the client given a request.
     def chooseProtocols(request):
         """ -> ( protocol_1, ... protocol_N) | None
 
