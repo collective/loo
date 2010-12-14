@@ -1,46 +1,31 @@
-<h1 tal:replace="structure here/manage_page_header">Header</h1>
+<h1 tal:replace="structure here/manage_page_header"></h1>
 
 <h2 tal:define="form_title string:Add Login Only Once Plugin"
-    tal:replace="structure here/manage_form_title">Form Title</h2>
+    tal:replace="structure here/manage_form_title"></h2>
 
 <p class="form-help">
-Enforce only one simultaneous login per user
+    Enforce only one simultaneous login per user
 </p>
 
-<form action="create_plugin" method="post"
- enctype="multipart/form-data">
+<form action="create_plugin" method="post" enctype="multipart/form-data">
 <table cellspacing="0" cellpadding="2" border="0">
-  <tr>
-    <td align="left" valign="top">
-    <div class="form-label">
-    Id
-    </div>
+<tr>
+    <td align="left" valign="top"><div class="form-label"></div></td>
+    <td align="left" valign="top"><input type="text" name="id" size="40" 
+        value="login_only_once"/></td>
+</tr>
+<tr>
+    <td align="left" valign="top"><div class="form-optional"></div></td>
+    <td align="left" valign="top"><input type="text" name="title" size="40"
+        value="Login Only Once Plugin" />
     </td>
-    <td align="left" valign="top">
-    <input type="text" name="id" size="40" value="login_only_once"/>
+</tr>
+<tr>
+    <td align="left" valign="top"></td>
+    <td align="left" valign="top"><div class="form-element"><input
+        class="form-element" type="submit" name="submit" value="Add" /></div>
     </td>
-  </tr>
-  <tr>
-    <td align="left" valign="top">
-    <div class="form-optional">
-    Title
-    </div>
-    </td>
-    <td align="left" valign="top">
-    <input type="text" name="title" size="40" value="Login Only Once Plugin"/>
-    </td>
-  </tr>
-  <tr>
-    <td align="left" valign="top">
-    </td>
-    <td align="left" valign="top">
-    <div class="form-element">
-    <input class="form-element" type="submit" name="submit"
-     value=" Add " />
-    </div>
-    </td>
-  </tr>
+</tr>
 </table>
 </form>
-
 <h1 tal:replace="structure here/manage_page_footer">Footer</h1>
