@@ -19,7 +19,7 @@ class LoginOnlyOncePlugin(BasePlugin):
         self.title = title
 
 
-def add_plugin(dispatcher, id, title=None, REQUEST=None):
+def create_plugin(dispatcher, id, title=None, REQUEST=None):
     """
     Boo yah! You need this doc string or Zope 2's publisher will drop this
     method faster than you can say: "This page does not seem to exist..."
@@ -40,4 +40,4 @@ registerMultiPlugin(LoginOnlyOncePlugin.meta_type)
 def initialize(context):
     pt = PageTemplateFile('add_plugin', globals(), __name__='manage_addPlugin')
     context.registerClass(LoginOnlyOncePlugin, permission=manage_users,
-        constructors=(pt, add_plugin), visibility=None, icon='loo.png')
+        constructors=(pt, create_plugin), visibility=None, icon='loo.png')

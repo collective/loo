@@ -7,7 +7,7 @@
 Enforce one simultaneous login per user
 </p>
 
-<form action="add_plugin" method="post"
+<form action="create_plugin" method="post"
  enctype="multipart/form-data">
 <table cellspacing="0" cellpadding="2" border="0">
   <tr>
