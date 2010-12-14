@@ -29,10 +29,12 @@ class LoginOnlyOncePlugin(BasePlugin):
 
     meta_type = 'Login Only Once Plugin'
     security = ClassSecurityInfo()
+    _do_not_swallow_my_exceptions = True
 
     def __init__(self, id, title=None):
         self._setId(id)
         self.title = title
+
 
     # IExtractionPlugin
     # Extracts login name and credentials from a request.
