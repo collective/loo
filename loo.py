@@ -1,8 +1,21 @@
+from App.class_init import default__class_init__ as InitializeClass
 from AccessControl.Permissions import manage_users
 from AccessControl.SecurityInfo import ClassSecurityInfo
 from Products.PageTemplates.PageTemplateFile import PageTemplateFile
 from Products.PluggableAuthService import registerMultiPlugin
 from Products.PluggableAuthService.plugins.BasePlugin import BasePlugin
+from Products.PluggableAuthService.utils import classImplements
+from Products.PluggableAuthService.interfaces.plugins import \
+    IAnonymousUserFactoryPlugin, IAuthenticationPlugin, \
+    IChallengePlugin, IChallengeProtocolChooser, ICredentialsResetPlugin, \
+    ICredentialsUpdatePlugin, IExtractionPlugin, IGroupEnumerationPlugin, \
+    IGroupsPlugin, ILoginPasswordExtractionPlugin, \
+    ILoginPasswordHostExtractionPlugin, IPropertiesPlugin, \
+    IRequestTypeSniffer, IRoleAssignerPlugin, \
+    IRoleEnumerationPlugin, IRolesPlugin, \
+    IUpdatePlugin, IUserAdderPlugin, \
+    IUserEnumerationPlugin, IUserFactoryPlugin, IValidationPlugin
+
 
 
 # This is probably insane, but it fools five:registerPackage into thinking
@@ -42,3 +55,17 @@ def initialize(context):
     pt = PageTemplateFile(template, globals(), __name__=template)
     context.registerClass(LoginOnlyOncePlugin, permission=manage_users,
         constructors=(pt, create_plugin), visibility=None, icon='loo.png')
+
+
+classImplements(LoginOnlyOncePlugin, IAnonymousUserFactoryPlugin, IAuthenticationPlugin,
+    IChallengePlugin, IChallengeProtocolChooser, ICredentialsResetPlugin,
+    ICredentialsUpdatePlugin, IExtractionPlugin, IGroupEnumerationPlugin,
+    IGroupsPlugin, ILoginPasswordExtractionPlugin,
+    ILoginPasswordHostExtractionPlugin, IPropertiesPlugin,
+    IRequestTypeSniffer, IRoleAssignerPlugin,
+    IRoleEnumerationPlugin, IRolesPlugin,
+    IUpdatePlugin, IUserAdderPlugin,
+    IUserEnumerationPlugin, IUserFactoryPlugin, IValidationPlugin)
+
+InitializeClass(LoginOnlyOncePlugin)
+
