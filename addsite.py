@@ -7,7 +7,7 @@ def _setup_app(app, admin):
     from AccessControl.SecurityManagement import newSecurityManager
     from Testing.makerequest import makerequest
     admin = app.acl_users.getUser(admin)
-    admin = admin.__of__(app.acl_users)
+    admin = admin.__of__(app.acl_users)  # Add admin to acl_users' aq_chain
     newSecurityManager(None, admin)
     app = makerequest(app)
     return app
