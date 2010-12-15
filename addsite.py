@@ -25,7 +25,7 @@ if __name__ == '__main__':
     app = locals()['app']  # make pyflakes happy
     if len(argv) != 5:
         print ("Usage: bin/plone run addsite.py <zope_admin> <plone_site>"
-            "<user> <password>")
+            " <user> <password>")
     else:
         admin, site, user, pw = argv[1:5]
         addsite(app, admin, site)
