@@ -6,7 +6,10 @@ Another "mock up" (experimental) PAS plugin
 Goal
 ----
 
-To enforce only one simultaneous login per user in Plone the Right Way(tm).
+To enforce only one simultaneous login per user in Plone, the Right Way(tm).
+This is just an experiment. The results will likely go into
+Products.NoDuplicateLogin (which is the closest pre-existing add-on I could
+find, but does not yet work in Plone 4).
 
 Notes
 ~~~~~
@@ -23,11 +26,6 @@ http://sourceforge.net/mailarchive/message.php?msg_id=26576028::
     happily give a separate session to each browser the user is logged in
     on. Perhaps that could be solved with a custom browser_id_manager or
     using something else to store per user sessions.
-
-    I am however against adding this functionality to Plone core. It's
-    definitely add-on product territory as it comes with a significant
-    performance penalty and I am against complicating the in-built login
-    machinery.
 
 http://sourceforge.net/mailarchive/message.php?msg_id=26577841::
 
