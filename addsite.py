@@ -15,7 +15,9 @@ def _setup_app(app, admin):
 
 def addsite(app, admin, site):
     app = _setup_app(app, admin)
-    addPloneSite(app, site)
+    extension_ids = ('plonetheme.classic:default',
+        'plonetheme.sunburst:default')
+    addPloneSite(app, site, extension_ids=extension_ids)
 
 
 def adduser(app, site, user, pw):
