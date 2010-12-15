@@ -93,6 +93,7 @@ class LoginOnlyOncePlugin(BasePlugin):
 
         o If the credentials cannot be authenticated, return None.
         """
+        raise AttributeError, "%s, %s" % (self, credentials)
 
     # IChallengePlugin
     # Initiate a challenge to the user to provide credentials.
