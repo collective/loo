@@ -22,6 +22,7 @@ def adduser(app, site, user, pw):
     app[site].portal_membership.addMember(user, pw, [], [])
 
 if __name__ == '__main__':
+    app = locals()['app']  # make pyflakes happy
     if len(argv) != 5:
         print ("Usage: bin/plone run addsite.py <zope_admin> <plone_site>"
             "<user> <password>")
