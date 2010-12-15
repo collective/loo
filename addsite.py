@@ -9,9 +9,6 @@ def adduser(site, user, pw):
 
 if __name__ == '__main__':
     argv = sys.argv
-    admin = argv[1]
-    site = argv[2]
-    user = argv[3]
-    pw = argv[4]
+    admin , site , user , pw = argv[1:5]
     addsite(app, admin, site)
     adduser(site, user, pw)
