@@ -1,6 +1,7 @@
 
-from sys import argv
 from Products.CMFPlone.factory import addPloneSite
+from sys import argv
+from transaction import commit
 
 def _setup_app(app, admin):
     from AccessControl.SecurityManagement import newSecurityManager
@@ -15,10 +16,14 @@ def addsite(app, admin, site):
     app = _setup_app(app, admin)
     addPloneSite(app, site)
 
-def adduser(site, user, pw):
-    print site, user, pw
+def adduser(app, site, user, pw):
+    app[site].portal_membership.addMember(user, pw, [], [])
 
 if __name__ == '__main__':
-    admin, site, user, pw = argv[1:5]
-    addsite(app, admin, site)
-    adduser(site, user, pw)
+    if len(argv) != 5:
+        print "Usage: "
+    else:
+        admin, site, user, pw = argv[1:5]
+        addsite(app, admin, site)
+        adduser(app, site, user, pw)
+        commit()
