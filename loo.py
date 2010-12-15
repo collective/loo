@@ -29,7 +29,7 @@ class LoginOnlyOncePlugin(BasePlugin):
 
     meta_type = 'Login Only Once Plugin'
     security = ClassSecurityInfo()
-    _do_not_swallow_my_exceptions = True
+    _dont_swallow_my_exceptions = True
 
     def __init__(self, id, title=None):
         self._setId(id)
@@ -93,7 +93,6 @@ class LoginOnlyOncePlugin(BasePlugin):
 
         o If the credentials cannot be authenticated, return None.
         """
-        pass
 
     # IChallengePlugin
     # Initiate a challenge to the user to provide credentials.
