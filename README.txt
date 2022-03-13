@@ -16,7 +16,7 @@ Notes
 
 Via Laurence Rowe on plone-developers.
 
-http://sourceforge.net/mailarchive/message.php?msg_id=26576028::
+https://sourceforge.net/mailarchive/message.php?msg_id=26576028::
 
     You'll need a PAS plugin either way. Whether that uses the Zope2
     session machinery or something else is then up to you. Zope's sessions
@@ -27,7 +27,7 @@ http://sourceforge.net/mailarchive/message.php?msg_id=26576028::
     on. Perhaps that could be solved with a custom browser_id_manager or
     using something else to store per user sessions.
 
-http://sourceforge.net/mailarchive/message.php?msg_id=26577841::
+https://sourceforge.net/mailarchive/message.php?msg_id=26577841::
 
     It would be better to store this in the normal Zope session storage in
     the temp_folder though rather than in the main ZODB, otherwise sites
@@ -42,7 +42,7 @@ http://sourceforge.net/mailarchive/message.php?msg_id=26577841::
     could then check this cookieagainst the user's browser id stored at
     login time.
 
-http://sourceforge.net/mailarchive/message.php?msg_id=26697074::
+https://sourceforge.net/mailarchive/message.php?msg_id=26697074::
 
     plone.session is confusingly named. It has no relation to zope 2 sessions,
     which offer per session storage, it only identifies a user. While zope 2
